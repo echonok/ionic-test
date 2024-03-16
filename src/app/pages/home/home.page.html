@@ -60,15 +60,17 @@
     <ion-row>
       <ion-col size-md="6" offset-md="3">
         <ion-list>
-          <ion-item *ngFor="let expense of expensesList">
-            <ion-label>{{ expense.reason }}</ion-label>
-            <ion-note slot="end">{{ expense.amount }}</ion-note>
-          </ion-item>
+          @for (expense of expensesList; track expense.reason) {
+            <ion-item>
+              <ion-label>{{ expense.reason }}</ion-label>
+              <ion-note slot="end">{{ expense.amount }}</ion-note>
+            </ion-item>
+          }
         </ion-list>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size-md="6" offse-mdt="3">
+      <ion-col size-md="6" offset-md="3">
         <p class="ion-padding">Total: <span>{{ totalExpenses }}</span></p>
       </ion-col>
     </ion-row>
