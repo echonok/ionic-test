@@ -1,8 +1,18 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {
+  IonAlert,
+  IonButton,
+  IonCard, IonCardContent,
+  IonCardHeader, IonCardSubtitle,
+  IonCardTitle,
+  IonContent,
+  IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonList, IonNote,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { addOutline, closeOutline } from 'ionicons/icons';
-import { IonicModule } from '@ionic/angular';
 
 interface ICourse {
   name: string;
@@ -14,7 +24,7 @@ interface ICourse {
   templateUrl: './courses.page.html',
   styleUrls: ['./courses.page.scss'],
   standalone: true,
-  imports: [IonicModule, FormsModule],
+  imports: [FormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonItem, IonInput, IonButton, IonIcon, IonList, IonLabel, IonNote, IonAlert],
 })
 export class CoursesPage {
   courseList: ICourse[] = [];
