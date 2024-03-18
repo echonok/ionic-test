@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {
   IonHeader,
   IonToolbar,
@@ -19,9 +20,6 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { addOutline, closeOutline } from 'ionicons/icons';
-import { FormsModule } from '@angular/forms';
-import { NgForOf } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
 
 interface IExpense {
   reason: string;
@@ -33,7 +31,7 @@ interface IExpense {
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule, FormsModule],
+  imports: [FormsModule, IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonItem, IonInput, IonButton, IonIcon, IonList, IonLabel, IonNote, IonAlert],
 })
 export class HomePage {
   text = 'Ready to create an app?';
