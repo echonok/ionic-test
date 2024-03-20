@@ -16,6 +16,7 @@ import {
   IonItem,
   IonLabel,
   IonList,
+  IonMenuButton,
   IonRow,
   IonThumbnail,
   IonTitle,
@@ -33,7 +34,7 @@ import { add } from 'ionicons/icons';
   templateUrl: './offers.page.html',
   styleUrls: ['./offers.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonImg, IonItem, IonLabel, IonList, IonRow, IonThumbnail, RouterLink, IonButtons, IonIcon],
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonImg, IonItem, IonLabel, IonList, IonRow, IonThumbnail, RouterLink, IonButtons, IonIcon, IonMenuButton],
 })
 export class OffersPage implements OnInit {
 
@@ -42,7 +43,7 @@ export class OffersPage implements OnInit {
   constructor(
     private placesService: PlacesService,
   ) {
-    addIcons({ add })
+    addIcons({ add });
   }
 
   ngOnInit() {
