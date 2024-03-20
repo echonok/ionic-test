@@ -1,20 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import {
+  IonButton,
+  IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle,
+  IonCol,
+  IonContent,
+  IonGrid,
+  IonHeader, IonImg, IonItem, IonLabel, IonList,
+  IonRow, IonThumbnail,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/angular/standalone';
+import { PlacesService } from '../places.service';
+import { Place } from '../../../models/place.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-discover',
   templateUrl: './discover.page.html',
   styleUrls: ['./discover.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonImg, IonCardContent, IonCardSubtitle, IonList, IonItem, IonThumbnail, IonLabel, IonButton, RouterLink],
 })
 export class DiscoverPage implements OnInit {
 
-  constructor() { }
+  loadedPlaces: Place[];
+
+  constructor(
+    private placesService: PlacesService,
+  ) {
+  }
 
   ngOnInit() {
+    this.loadedPlaces = this.placesService.places;
   }
 
 }
