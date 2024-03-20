@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import {
   IonBackButton,
   IonButton,
@@ -8,11 +9,14 @@ import {
   IonContent,
   IonHeader,
   IonTitle,
-  IonToolbar, NavController,
+  IonToolbar,
+  ModalController,
+  NavController,
 } from '@ionic/angular/standalone';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+
 import { PlacesService } from '../../places.service';
 import { Place } from '../../../../models/place.model';
+import { CreateBookingComponent } from '../../../bookings/create-booking/create-booking.component';
 
 @Component({
   selector: 'app-place-detail',
@@ -28,6 +32,7 @@ export class PlaceDetailPage implements OnInit {
     private navController: NavController,
     private activatedRoute: ActivatedRoute,
     private placesService: PlacesService,
+    private modalController: ModalController,
   ) {
   }
 
@@ -40,7 +45,16 @@ export class PlaceDetailPage implements OnInit {
     });
   }
 
-  onBookPlace() {
+  async onBookPlace() {
+    const modal = await this.modalController.create({
+      component: CreateBookingComponent,
+      componentProps: { selectedPlace: this.place },
+    });
+    await modal.present();
+    const { data, role } = await modal.onDidDismiss();
 
+    if (role === 'confirm') {
+      console.log('booking!!!', data);
+    }
   }
 }

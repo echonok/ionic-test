@@ -14,7 +14,6 @@ export class AuthService {
   }
 
   login() {
-    console.log('login...');
     this._userIsAuth = true;
   }
 
