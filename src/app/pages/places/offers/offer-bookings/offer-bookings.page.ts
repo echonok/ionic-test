@@ -12,7 +12,7 @@ import {
   NavController,
 } from '@ionic/angular/standalone';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Place } from '../../../../models/place.model';
+
 import { PlacesService } from '../../places.service';
 import { Offer } from '../../../../models/offer.model';
 
