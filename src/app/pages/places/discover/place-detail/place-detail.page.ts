@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import {
   IonBackButton,
   IonButton,
@@ -12,7 +13,7 @@ import {
   ModalController,
   NavController,
 } from '@ionic/angular/standalone';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+
 import { PlacesService } from '../../places.service';
 import { Place } from '../../../../models/place.model';
 import { CreateBookingComponent } from '../../../bookings/create-booking/create-booking.component';
@@ -53,7 +54,7 @@ export class PlaceDetailPage implements OnInit {
     const { data, role } = await modal.onDidDismiss();
 
     if (role === 'confirm') {
-      console.log('booking!!!');
+      console.log('booking!!!', data);
     }
   }
 }
