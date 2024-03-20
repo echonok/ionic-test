@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 
+import { authGuard } from './pages/auth/auth.guard';
+
 export const routes: Routes = [
   {
     path: '',
@@ -12,10 +14,12 @@ export const routes: Routes = [
   },
   {
     path: 'places',
-    loadChildren: () => import('./pages/places/places.routes').then((m) => m.placesRoutes)
+    loadChildren: () => import('./pages/places/places.routes').then((m) => m.placesRoutes),
+    canMatch: [authGuard],
   },
   {
     path: 'bookings',
-    loadComponent: () => import('./pages/bookings/bookings.page').then((m) => m.BookingsPage)
+    loadComponent: () => import('./pages/bookings/bookings.page').then((m) => m.BookingsPage),
+    canMatch: [authGuard],
   },
 ];
