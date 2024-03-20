@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Place } from '../../models/place.model';
+import { Offer } from '../../models/offer.model';
 
 const mockPlaces = [
   new Place('p1', 'New York', 'appartments', 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F2.bp.blogspot.com%2F-pzoYPV2yap0%2FUsVEz8GvAZI%2FAAAAAAAAA98%2F1feOkrYOy_4%2Fs1600%2FNew-York-City-Winterhgc.jpg&f=1&nofb=1&ipt=63d5e2ce8d2f21f122b2c3c881aba125e687ae9d21d9e14c75786c524f6b407e&ipo=images', 123),
@@ -13,10 +14,19 @@ const mockPlaces = [
 })
 export class PlacesService {
   private _places: Place[] = mockPlaces;
+  private _offers: Offer[] = mockPlaces;
 
   constructor() { }
 
   get places() {
     return this._places.slice();
+  }
+
+  get offers() {
+    return this._offers.slice();
+  }
+
+  getPlace(placeId: string) {
+    return { ...this._places.find((place) => place._id === placeId) };
   }
 }
