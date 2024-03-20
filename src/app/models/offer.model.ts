@@ -1,4 +1,4 @@
-export class Place {
+export class Offer {
   constructor(
     public _id: string,
     public title: string,

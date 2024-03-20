@@ -23,7 +23,7 @@
               <ion-button
                 fill="clear"
                 color="primary"
-                [routerLink]="['/', 'places', 'discover', loadedPlaces[0].id]"
+                [routerLink]="['/', 'places', 'discover', loadedPlaces[0]._id]"
               >More</ion-button>
             </div>
           </ion-card>
@@ -33,8 +33,8 @@
     <ion-row>
       <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
         <ion-list>
-          @for (place of loadedPlaces.slice(1); track place.id) {
-            <ion-item detail [routerLink]="['/', 'places', 'discover', place.id]">
+          @for (place of loadedPlaces.slice(1); track place._id) {
+            <ion-item detail [routerLink]="['/', 'places', 'discover', place._id]">
               <ion-thumbnail slot="start">
                 <ion-img [src]="place.imageUrl"></ion-img>
               </ion-thumbnail>
