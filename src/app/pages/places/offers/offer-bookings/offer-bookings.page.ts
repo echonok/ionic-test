@@ -12,8 +12,9 @@ import {
   NavController,
 } from '@ionic/angular/standalone';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Place } from '../../../../models/place.model';
+
 import { PlacesService } from '../../places.service';
+import { Offer } from '../../../../models/offer.model';
 
 @Component({
   selector: 'app-offer-bookings',
@@ -23,7 +24,7 @@ import { PlacesService } from '../../places.service';
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonBackButton, IonButton, IonButtons, RouterLink],
 })
 export class OfferBookingsPage implements OnInit {
-  place: Place;
+  offer: Offer;
 
   constructor(
     private navController: NavController,
@@ -34,10 +35,10 @@ export class OfferBookingsPage implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
-      if (!paramMap.has('placeId')){
+      if (!paramMap.has('offerId')){
         this.navController.navigateBack('/places/offers').then();
       }
-      this.place = this.placesService.getPlace(paramMap.get('placeId'))
+      this.offer = this.placesService.getOffer(paramMap.get('offerId'))
     })
   }
 }

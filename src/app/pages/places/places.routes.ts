@@ -31,11 +31,11 @@ export const placesRoutes: Routes = [
             loadComponent: () => import('./offers/new-offer/new-offer.page').then((m) => m.NewOfferPage),
           },
           {
-            path: 'edit/:placeId',
+            path: 'edit/:offerId',
             loadComponent: () => import('./offers/edit-offer/edit-offer.page').then((m) => m.EditOfferPage),
           },
           {
-            path: ':placeId',
+            path: ':offerId',
             loadComponent: () => import('./offers/offer-bookings/offer-bookings.page').then((m) => m.OfferBookingsPage),
           },
         ],
