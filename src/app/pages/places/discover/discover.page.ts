@@ -18,7 +18,7 @@ import {
   IonLabel,
   IonList,
   IonMenuButton,
-  IonRow,
+  IonRow, IonText,
   IonThumbnail,
   IonTitle,
   IonToolbar,
@@ -32,7 +32,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './discover.page.html',
   styleUrls: ['./discover.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonImg, IonCardContent, IonCardSubtitle, IonList, IonItem, IonThumbnail, IonLabel, IonButton, RouterLink, IonButtons, IonMenuButton],
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonImg, IonCardContent, IonCardSubtitle, IonList, IonItem, IonThumbnail, IonLabel, IonButton, RouterLink, IonButtons, IonMenuButton, IonText],
 })
 export class DiscoverPage implements OnInit {
 
