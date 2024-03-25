@@ -13,7 +13,7 @@ import {
   IonGrid,
   IonHeader, IonIcon,
   IonImg,
-  IonItem,
+  IonItem, IonItemOption, IonItemOptions, IonItemSliding,
   IonLabel,
   IonList,
   IonMenuButton,
@@ -27,14 +27,14 @@ import { PlacesService } from '../places.service';
 import { Offer } from '../../../models/offer.model';
 import { RouterLink } from '@angular/router';
 import { addIcons } from 'ionicons';
-import { add } from 'ionicons/icons';
+import { add, create } from 'ionicons/icons';
 
 @Component({
   selector: 'app-offers',
   templateUrl: './offers.page.html',
   styleUrls: ['./offers.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonImg, IonItem, IonLabel, IonList, IonRow, IonThumbnail, RouterLink, IonButtons, IonIcon, IonMenuButton],
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonImg, IonItem, IonLabel, IonList, IonRow, IonThumbnail, RouterLink, IonButtons, IonIcon, IonMenuButton, IonItemSliding, IonItemOptions, IonItemOption],
 })
 export class OffersPage implements OnInit {
 
@@ -43,11 +43,14 @@ export class OffersPage implements OnInit {
   constructor(
     private placesService: PlacesService,
   ) {
-    addIcons({ add });
+    addIcons({ add, create });
   }
 
   ngOnInit() {
     this.loadedOffers = this.placesService.offers;
   }
 
+  onEdit(offerId: string) {
+    console.log({ offerId });
+  }
 }
