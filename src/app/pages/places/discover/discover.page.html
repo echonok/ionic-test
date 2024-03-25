@@ -20,14 +20,17 @@
 
             <ion-img [src]="loadedPlaces[0].imageUrl"></ion-img>
             <ion-card-content>
-              <p><ion-text>{{ loadedPlaces[0].description }}</ion-text></p>
+              <p>
+                <ion-text>{{ loadedPlaces[0].description }}</ion-text>
+              </p>
             </ion-card-content>
             <div>
               <ion-button
                 fill="clear"
                 color="primary"
                 [routerLink]="['/', 'places', 'discover', loadedPlaces[0]._id]"
-              >More</ion-button>
+              >More
+              </ion-button>
             </div>
           </ion-card>
         }
@@ -36,9 +39,9 @@
 
     <ion-row>
       <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
-        <ion-list>
-          @for (place of loadedPlaces.slice(1); track place._id) {
-            <ion-item detail [routerLink]="['/', 'places', 'discover', place._id]">
+        <cdk-virtual-scroll-viewport appendOnly itemSize="10" class="example-viewport">
+          <ion-list>
+            <ion-item *cdkVirtualFor="let place of loadedPlaces.slice(1); let i = index" detail [routerLink]="['/', 'places', 'discover', place._id]">
               <ion-thumbnail slot="start">
                 <ion-img [src]="place.imageUrl"></ion-img>
               </ion-thumbnail>
@@ -47,8 +50,22 @@
                 <p>{{ place.description }}</p>
               </ion-label>
             </ion-item>
-          }
-        </ion-list>
+          </ion-list>
+        </cdk-virtual-scroll-viewport>
+
+<!--        <ion-list>-->
+<!--          @for (place of loadedPlaces.slice(1); track place._id) {-->
+<!--            <ion-item detail [routerLink]="['/', 'places', 'discover', place._id]">-->
+<!--              <ion-thumbnail slot="start">-->
+<!--                <ion-img [src]="place.imageUrl"></ion-img>-->
+<!--              </ion-thumbnail>-->
+<!--              <ion-label>-->
+<!--                <h2>{{ place.title }}</h2>-->
+<!--                <p>{{ place.description }}</p>-->
+<!--              </ion-label>-->
+<!--            </ion-item>-->
+<!--          }-->
+<!--        </ion-list>-->
       </ion-col>
     </ion-row>
   </ion-grid>
