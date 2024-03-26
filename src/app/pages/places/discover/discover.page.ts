@@ -18,7 +18,7 @@ import {
   IonLabel,
   IonList,
   IonMenuButton,
-  IonRow, IonText,
+  IonRow, IonSegment, IonSegmentButton, IonText,
   IonThumbnail,
   IonTitle,
   IonToolbar,
@@ -26,13 +26,14 @@ import {
 import { PlacesService } from '../places.service';
 import { Place } from '../../../models/place.model';
 import { RouterLink } from '@angular/router';
+import { SegmentChangeEventDetail } from '@ionic/angular';
 
 @Component({
   selector: 'app-discover',
   templateUrl: './discover.page.html',
   styleUrls: ['./discover.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonImg, IonCardContent, IonCardSubtitle, IonList, IonItem, IonThumbnail, IonLabel, IonButton, RouterLink, IonButtons, IonMenuButton, IonText],
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonImg, IonCardContent, IonCardSubtitle, IonList, IonItem, IonThumbnail, IonLabel, IonButton, RouterLink, IonButtons, IonMenuButton, IonText, IonSegment, IonSegmentButton],
 })
 export class DiscoverPage implements OnInit {
 
@@ -47,4 +48,9 @@ export class DiscoverPage implements OnInit {
     this.loadedPlaces = this.placesService.places;
   }
 
+  protected readonly Place = Place;
+
+  onFilterUpdate($event: CustomEvent<SegmentChangeEventDetail>) {
+    console.log({ $event: $event.detail })
+  }
 }

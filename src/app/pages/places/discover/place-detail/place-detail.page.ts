@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import {
+  ActionSheetController,
   IonBackButton,
   IonButton,
   IonButtons,
@@ -33,6 +34,7 @@ export class PlaceDetailPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private placesService: PlacesService,
     private modalController: ModalController,
+    private actionSheetController: ActionSheetController,
   ) {
   }
 
@@ -46,6 +48,19 @@ export class PlaceDetailPage implements OnInit {
   }
 
   async onBookPlace() {
+    const actionEl = await this.actionSheetController.create({
+      header: 'Choose an Action',
+      buttons: [
+        { text: 'Select Date', handler: async () => await this.openBookingModal('select') },
+        { text: 'Random Date', handler: async () => await this.openBookingModal('random') },
+        { text: 'Cancel', role: 'cancel' },
+      ],
+    });
+    await actionEl.present();
+  }
+
+  async openBookingModal(model: 'select' | 'random') {
+    console.log({ model });
     const modal = await this.modalController.create({
       component: CreateBookingComponent,
       componentProps: { selectedPlace: this.place },

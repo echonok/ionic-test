@@ -13,7 +13,7 @@ export class PlacesService {
 
   constructor() { }
 
-  get places() {
+  get places(): Place[] {
     return this._places.slice();
   }
 
