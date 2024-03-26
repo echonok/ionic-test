@@ -14,13 +14,7 @@ export class PlacesService {
   constructor() { }
 
   get places(): Place[] {
-    const muMockPlaces = []
-    for (let i = 0; i < 10000; i++) {
-      muMockPlaces.push({ ...this._places[0] });
-    }
-    console.log({ muMockPlaces });
-    return muMockPlaces.slice()
-    // return this._places.slice();
+    return this._places.slice();
   }
 
   get offers() {

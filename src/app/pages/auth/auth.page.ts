@@ -2,7 +2,14 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonButton, IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import {
+  IonButton,
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  LoadingController,
+} from '@ionic/angular/standalone';
 
 import { AuthService } from './auth.service';
 
@@ -14,14 +21,21 @@ import { AuthService } from './auth.service';
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton],
 })
 export class AuthPage {
+
   constructor(
     private authService: AuthService,
     private router: Router,
+    private loadingController: LoadingController,
   ) {
   }
 
-  onLogin() {
+  async onLogin() {
     this.authService.login();
-    this.router.navigateByUrl('/places/discover').then();
+    const loadingEl = await this.loadingController.create({ keyboardClose: true, message: 'Logging in...' });
+    await loadingEl.present();
+    setTimeout(async () => {
+      await loadingEl.dismiss();
+      await this.router.navigateByUrl('/places/discover');
+    }, 3_000)
   }
 }

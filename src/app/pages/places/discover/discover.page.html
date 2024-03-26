@@ -8,6 +8,16 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+  <ion-segment value="all" (ionChange)="onFilterUpdate($event)">
+    <ion-segment-button value="all">
+      All Places
+    </ion-segment-button>
+    <ion-segment-button value="bookable">
+      Bookable Places
+    </ion-segment-button>
+  </ion-segment>
+
   <ion-grid>
     <ion-row>
       <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
@@ -39,33 +49,19 @@
 
     <ion-row>
       <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
-        <cdk-virtual-scroll-viewport appendOnly itemSize="10" class="example-viewport">
-          <ion-list>
-            <ion-item *cdkVirtualFor="let place of loadedPlaces.slice(1); let i = index" detail [routerLink]="['/', 'places', 'discover', place._id]">
+        <ion-list>
+          @for (place of loadedPlaces.slice(1); track place._id) {
+            <ion-item detail [routerLink]="['/', 'places', 'discover', place._id]">
               <ion-thumbnail slot="start">
-                <ion-img [src]="place.imageUrl"></ion-img>
+                <ion-img [src]="place.imageUrl" ></ion-img>
               </ion-thumbnail>
               <ion-label>
                 <h2>{{ place.title }}</h2>
                 <p>{{ place.description }}</p>
               </ion-label>
             </ion-item>
-          </ion-list>
-        </cdk-virtual-scroll-viewport>
-
-<!--        <ion-list>-->
-<!--          @for (place of loadedPlaces.slice(1); track place._id) {-->
-<!--            <ion-item detail [routerLink]="['/', 'places', 'discover', place._id]">-->
-<!--              <ion-thumbnail slot="start">-->
-<!--                <ion-img [src]="place.imageUrl"></ion-img>-->
-<!--              </ion-thumbnail>-->
-<!--              <ion-label>-->
-<!--                <h2>{{ place.title }}</h2>-->
-<!--                <p>{{ place.description }}</p>-->
-<!--              </ion-label>-->
-<!--            </ion-item>-->
-<!--          }-->
-<!--        </ion-list>-->
+          }
+        </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>
