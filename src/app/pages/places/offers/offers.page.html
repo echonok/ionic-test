@@ -21,15 +21,7 @@
         <ion-list>
           @for (offer of loadedOffers; track offer._id) {
             <ion-item-sliding>
-              <ion-item detail [routerLink]="['/', 'places', 'offers', offer._id]">
-                <ion-thumbnail slot="start">
-                  <ion-img [src]="offer.imageUrl"></ion-img>
-                </ion-thumbnail>
-                <ion-label>
-                  <h2>{{ offer.title }}</h2>
-                  <p>{{ offer.description }}</p>
-                </ion-label>
-              </ion-item>
+              <app-offer-item [offer]="offer"></app-offer-item>
               <ion-item-options>
                 <ion-item-option color="secondary" [routerLink]="['/', 'places', 'offers', offer._id]">
                   <ion-icon name="create" slot="icon-only"></ion-icon>

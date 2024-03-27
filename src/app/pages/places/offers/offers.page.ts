@@ -28,13 +28,14 @@ import { Offer } from '../../../models/offer.model';
 import { RouterLink } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { add, create } from 'ionicons/icons';
+import { OfferItemComponent } from './offer-item/offer-item.component';
 
 @Component({
   selector: 'app-offers',
   templateUrl: './offers.page.html',
   styleUrls: ['./offers.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonImg, IonItem, IonLabel, IonList, IonRow, IonThumbnail, RouterLink, IonButtons, IonIcon, IonMenuButton, IonItemSliding, IonItemOptions, IonItemOption],
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonImg, IonItem, IonLabel, IonList, IonRow, IonThumbnail, RouterLink, IonButtons, IonIcon, IonMenuButton, IonItemSliding, IonItemOptions, IonItemOption, OfferItemComponent],
 })
 export class OffersPage implements OnInit {
 
